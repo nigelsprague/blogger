@@ -1,7 +1,10 @@
 <script setup>
+import { AppState } from '@/AppState';
 import { blogsService } from '@/services/BlogsService';
 import Pop from '@/utils/Pop';
-import { onMounted } from 'vue';
+import { computed, onMounted } from 'vue';
+
+const blogs = computed(() => AppState.blogs)
 
 onMounted(() => {
   getAllBlogs()
@@ -19,10 +22,8 @@ async function getAllBlogs() {
 
 <template>
   <div class="container">
-    <section class="row">
-      <div class="col-12">
-        <h1>blogs here</h1>
-      </div>
+    <section v-for="blog in blogs" :key="blog.id" class="row my-3">
+      {{ blog }}
     </section>
   </div>
 </template>
