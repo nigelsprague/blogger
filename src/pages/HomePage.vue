@@ -1,5 +1,6 @@
 <script setup>
 import { AppState } from '@/AppState';
+import BlogCard from '@/components/globals/BlogCard.vue';
 import { blogsService } from '@/services/BlogsService';
 import Pop from '@/utils/Pop';
 import { computed, onMounted } from 'vue';
@@ -23,7 +24,7 @@ async function getAllBlogs() {
 <template>
   <div class="container">
     <section v-for="blog in blogs" :key="blog.id" class="row my-3">
-      {{ blog }}
+      <BlogCard :blogProp="blog" />
     </section>
   </div>
 </template>
